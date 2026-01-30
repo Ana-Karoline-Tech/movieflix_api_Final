@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    // Environment Settings - CORRIGIDO
+    "module": "NodeNext",  // "N" maiúsculo
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "types": ["node"],     // <--- ALTERE ISSO! De [] para ["node"]
+    
+    // ADICIONE estas linhas:
+    "moduleResolution": "NodeNext",  // Necessário com NodeNext
+    "esModuleInterop": true,         // Para compatibilidade
+    "allowSyntheticDefaultImports": true,
+    
+    // Other Outputs (mantém igual)
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Recommended Options
+    "strict": true,
+    "jsx": "react-jsx",  // Comente se não usar React
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true
+  }
+}
