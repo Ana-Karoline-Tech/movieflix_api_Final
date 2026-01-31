@@ -4,7 +4,7 @@ const port = 3000;
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Bem-vindo ao MovieFlix API!");
+  res.send("Raiz funcionando!");
 });
 
 app.get("/movies", (req, res) => {
