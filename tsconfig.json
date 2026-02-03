@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     // Environment Settings
+    "outDir": "./dist",
     "module": "NodeNext",
     "target": "ES2022",
     "lib": ["ES2022"],
