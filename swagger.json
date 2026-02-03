@@ -26,6 +26,77 @@
                     }
                 }
             }
+        },
+        "/movies/{id}": {
+            "put": {
+                "tags": ["Movies"],
+                "summary": "Atualizar um filme por ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID do filme a ser obtido",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MovieInput"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Filme atualizado com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Movie"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Filme não encontrado."
+                    },
+                    "500": {
+                        "description": "Falha ao atualizar o registro do filme"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Movies"],
+                "summary": "Deletar um filme por ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID do filme a ser deletado",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Filme deletado com sucesso."
+                    },
+                    "404": {
+                        "description": "Filme não encontrado."
+                    },
+                    "500": {
+                        "description": "Falha ao deletar o registro do filme"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -84,8 +155,41 @@
                         "format": "date",
                         "description": "Data de lançamento do filme"
                     }
-                    
                 }
+            },
+            "MovieInput": {
+                "type": "object",
+                "required": [
+                    "title",
+                    "genre_id",
+                    "language_id",
+                    "oscar_count",
+                    "release_date"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "Título do filme"
+                    },
+                    "genre_id": {
+                        "type": "integer",
+                        "description": "ID do gênero do filme"
+                    },
+                    "language_id": {
+                        "type": "string",
+                        "description": "ID do idioma do filme"
+                    },
+                    "oscar_count": {
+                        "type": "integer",
+                        "description": "Quantidade de Oscars ganhos pelo filme"
+                    },
+                    "release_date": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Data de lançamento do filme"
+                    }
+                },
+                "required": ["title", "genre_id", "language_id", "release_date"]
             }
         }
     },

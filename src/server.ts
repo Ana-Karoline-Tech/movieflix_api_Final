@@ -10,8 +10,7 @@ const prisma = new PrismaClient();
 app.use(express.json());
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-
-app.get("/", async (req, res) => {
+app.get("/movies", async (req, res) => {
   const movies = await prisma.movie.findMany({
     orderBy: {
       title: "asc",
